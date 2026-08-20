@@ -1,0 +1,6 @@
+{
+  "name": "Brickon Construction",
+  "description": "Modern, premium construction and architectural building services founded in 2018, delivering quality spaces with craftsmanship, care, and confidence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
