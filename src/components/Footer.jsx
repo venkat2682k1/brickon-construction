@@ -98,7 +98,7 @@ export const Footer = ({ onOpenProjectModal }) => {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
-          <div>© {new Date().getFullYear()} BRICKON CONSTRUCTION   All rights reserved.</div>
+          <div>© {new Date().getFullYear()} venkat   All rights reserved.</div>
           <div className="flex items-center gap-4">
             <span className="hover:text-[#1A1A1A] transition-colors cursor-pointer">Privacy & Terms</span>
             <span>|</span>
