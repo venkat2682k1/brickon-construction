@@ -25,6 +25,17 @@ const EMAILJS_PUBLIC_KEY = 'v064GnO7GQRIslB0G';
 const BRICKON_EMAIL = 'brickcon2025@gmail.com';
 
 // =====================================================
+// BRICKON CONTACT DETAILS
+// =====================================================
+
+const BRICKON_CONTACT = {
+  phone: '9884495559',
+  address: 'Chennai',
+  email: 'brickcon2025@gmail.com',
+  hours: 'Monday - Saturday, 9:00 AM - 6:00 PM',
+};
+
+// =====================================================
 // CONTACT SECTION
 // =====================================================
 
@@ -141,7 +152,9 @@ export const ContactSection = ({
 
       timeline: formData.timeline,
 
-      message: formData.message || 'No additional requirements provided',
+      message:
+        formData.message ||
+        'No additional requirements provided',
 
       uploaded_file:
         formData.uploadedFileName || 'No file attached',
@@ -167,15 +180,17 @@ export const ContactSection = ({
       console.log('EmailJS response:', response);
 
       if (response.status === 200) {
-        console.log('Brickon enquiry sent successfully.');
+        console.log(
+          'Brickon enquiry sent successfully.'
+        );
 
         setTicketNumber(generatedTicketNumber);
 
         setIsSubmitted(true);
-
-        setIsSubmitting(false);
       } else {
-        throw new Error('EmailJS returned an unexpected response.');
+        throw new Error(
+          'EmailJS returned an unexpected response.'
+        );
       }
     } catch (error) {
       console.error('EmailJS Error:', error);
@@ -185,7 +200,7 @@ export const ContactSection = ({
           error?.message ||
           'Unable to submit your project inquiry right now. Please try again.'
       );
-
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -226,6 +241,10 @@ export const ContactSection = ({
       uploadedFileName: '',
     });
   };
+
+  // =====================================================
+  // RENDER
+  // =====================================================
 
   return (
     <section
@@ -307,11 +326,11 @@ export const ContactSection = ({
                     </div>
 
                     <div className="text-[#1A1A1A] font-semibold mt-0.5">
-                      {companyInfo.contact.address}
+                      {BRICKON_CONTACT.address}
                     </div>
 
                     <div className="text-gray-500 text-xs mt-0.5">
-                      {companyInfo.contact.city}
+                      Chennai
                     </div>
 
                   </div>
@@ -334,12 +353,15 @@ export const ContactSection = ({
                       Direct Engineering Desk
                     </div>
 
-                    <div className="text-[#1A1A1A] font-semibold mt-0.5">
-                      {companyInfo.contact.phone}
-                    </div>
+                    <a
+                      href="tel:9884495559"
+                      className="text-[#1A1A1A] font-semibold mt-0.5 block hover:text-[#C35A3E] transition-colors"
+                    >
+                      9884495559
+                    </a>
 
                     <div className="text-gray-500 text-xs mt-0.5">
-                      {companyInfo.contact.altPhone}
+                      Direct Contact
                     </div>
 
                   </div>
@@ -362,12 +384,15 @@ export const ContactSection = ({
                       Blueprint Submissions
                     </div>
 
-                    <div className="text-[#1A1A1A] font-semibold mt-0.5">
-                      {companyInfo.contact.email}
-                    </div>
+                    <a
+                      href="mailto:brickcon2025@gmail.com"
+                      className="text-[#1A1A1A] font-semibold mt-0.5 block hover:text-[#C35A3E] transition-colors"
+                    >
+                      brickcon2025@gmail.com
+                    </a>
 
                     <div className="text-gray-500 text-xs mt-0.5">
-                      {companyInfo.contact.inquiriesEmail}
+                      Project Enquiries
                     </div>
 
                   </div>
@@ -391,7 +416,7 @@ export const ContactSection = ({
                     </div>
 
                     <div className="text-[#1A1A1A] font-semibold mt-0.5">
-                      {companyInfo.contact.hours}
+                      {BRICKON_CONTACT.hours}
                     </div>
 
                   </div>
@@ -441,11 +466,11 @@ export const ContactSection = ({
                   </div>
 
                   <div className="font-bold text-[#1A1A1A] text-xs uppercase tracking-wide">
-                    BRICKON DESIGN STUDIO & LAB
+                    BRICKON CONSTRUCTION
                   </div>
 
                   <div className="text-[11px] text-gray-500">
-                    Metro Skyline Tower, Suite 700
+                    Chennai
                   </div>
 
                 </div>
@@ -624,7 +649,7 @@ export const ContactSection = ({
                     <input
                       type="text"
                       name="location"
-                      placeholder="e.g. OMR, Chennai / Bengaluru"
+                      placeholder="e.g. OMR, Chennai"
                       value={formData.location}
                       onChange={handleInputChange}
                       className="w-full px-3.5 py-2.5 bg-[#F9F8F6] border border-gray-200 text-sm text-[#1A1A1A] placeholder-gray-400 focus:outline-none focus:border-[#C35A3E] focus:bg-white"
@@ -731,31 +756,6 @@ export const ContactSection = ({
                 {/* FILE */}
 
                 <div>
-
-                  <label className="block text-[11px] uppercase tracking-wider font-bold text-gray-700 mb-1.5">
-                    Attach Blueprint / Plot Sketch / Architectural CAD
-                  </label>
-
-                  <label className="flex items-center justify-center gap-2 p-3 bg-[#F9F8F6] border border-dashed border-gray-300 rounded cursor-pointer hover:border-[#C35A3E] transition-colors">
-
-                    <Upload className="w-4 h-4 text-[#C35A3E]" />
-
-                    <span className="text-xs text-gray-600 text-center">
-
-                      {formData.uploadedFileName
-                        ? `Attached: ${formData.uploadedFileName}`
-                        : 'Upload PDF, DWG, PNG, or JPG (Max 25MB)'}
-
-                    </span>
-
-                    <input
-                      type="file"
-                      onChange={handleFileUpload}
-                      className="hidden"
-                      accept=".pdf,.dwg,.png,.jpg,.jpeg"
-                    />
-
-                  </label>
 
                 </div>
 
@@ -914,12 +914,7 @@ export const ContactSection = ({
                     {formData.email}
                   </div>
 
-                  <div>
-                    <strong className="text-[#1A1A1A]">
-                      Attachment:
-                    </strong>{' '}
-                    {formData.uploadedFileName || 'None'}
-                  </div>
+
 
                 </div>
 
@@ -932,6 +927,26 @@ export const ContactSection = ({
                     your requirements and contact you within
                     24 business hours.
                   </p>
+
+                </div>
+
+                {/* CONTACT BUTTONS */}
+
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+
+                  <a
+                    href="tel:9884495559"
+                    className="px-6 py-3 bg-[#C35A3E] hover:bg-[#b04f35] text-xs font-bold text-white uppercase tracking-wider transition-colors"
+                  >
+                    Call 9884495559
+                  </a>
+
+                  <a
+                    href="mailto:brickcon2025@gmail.com"
+                    className="px-6 py-3 bg-white border border-gray-300 hover:border-[#C35A3E] text-xs font-bold text-[#1A1A1A] uppercase tracking-wider transition-colors"
+                  >
+                    Email Brickon
+                  </a>
 
                 </div>
 

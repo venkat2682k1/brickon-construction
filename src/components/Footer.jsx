@@ -1,117 +1,458 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowUp, Phone, Mail, MapPin, ShieldCheck } from 'lucide-react';
-import { companyInfo } from '../data/companyData';
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  ArrowUp,
+  ArrowUpRight,
+  Phone,
+  Mail,
+  MapPin,
+} from "lucide-react";
+
 import brickonLogo from "../assets/brickon-logo.png";
 
 export const Footer = ({ onOpenProjectModal }) => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const contactDetails = {
+    phone: "9884495559",
+    address: "Chennai, Tamil Nadu, India",
+    email: "brickcon2025@gmail.com",
   };
 
-  // Updated to use paths for React Router
   const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/our-story', label: 'Our Story' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/pricing', label: 'Pricing' },
-    { path: '/contact', label: 'Contact' },
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/projects", label: "Projects" },
+    { path: "/pricing", label: "Pricing" },
+    { path: "/contact", label: "Contact" },
   ];
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <footer id="main-footer" className="bg-white text-[#1A1A1A] border-t border-gray-200 relative mt-auto">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 sm:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-14 border-b border-gray-200">
-          
-          {/* Column 1: Brand & Info */}
-          <div className="lg:col-span-5 space-y-5">
-            <div className="flex items-center gap-3">
-              <div className="w-35 h-10 flex items-center justify-center">
-                  <img
-                    src={brickonLogo}
-                    alt="BRICKON CONSTRUCTION"
-                    className="h-95 w-323 object-contain"
-                  />
-              </div>
-            </div>
-            <p className="text-sm text-gray-600 font-light max-w-sm leading-relaxed">
-              Building quality spaces with craftsmanship, care and confidence since 2018. Specializing in luxury residential estates, commercial landmarks, and turnkey civil engineering.
+    <footer
+      className="
+        relative
+        bg-[#151515]
+        text-white
+        border-t
+        border-white/10
+        overflow-hidden
+      "
+    >
+
+      {/* SUBTLE ARCHITECTURAL GRID */}
+
+      <div
+        className="
+          absolute
+          inset-0
+          pointer-events-none
+          opacity-[0.025]
+          bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)]
+          bg-[size:50px_50px]
+        "
+      />
+
+      {/* TOP ACCENT */}
+
+      <div
+        className="
+          absolute
+          top-0
+          left-0
+          w-full
+          h-[2px]
+          bg-[#C35A3E]
+        "
+      />
+
+      {/* MAIN */}
+
+      <div
+        className="
+          relative
+          z-10
+          max-w-7xl
+          mx-auto
+          px-6
+          lg:px-10
+          py-12
+          sm:py-14
+        "
+      >
+
+        {/* TOP ROW */}
+
+        <div
+          className="
+            grid
+            grid-cols-1
+            md:grid-cols-12
+            gap-10
+            md:gap-8
+          "
+        >
+
+          {/* =================================================
+              BRAND
+          ================================================= */}
+
+          <div className="md:col-span-5">
+
+            <img
+              src={brickonLogo}
+              alt="BRICKON CONSTRUCTION"
+              className="
+                w-44
+                h-auto
+                max-h-14
+                object-contain
+                brightness-0
+                invert
+                mb-5
+              "
+            />
+
+            <p
+              className="
+                text-sm
+                text-gray-500
+                leading-relaxed
+                max-w-sm
+                font-light
+              "
+            >
+              Building exceptional spaces through
+              precision, quality and thoughtful design.
             </p>
-            <div className="pt-2 flex items-center gap-3 text-xs text-gray-600">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#F9F8F6] border border-gray-200 text-gray-700">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#C35A3E]" />
-                <span>ISO 9001:2015 Certified</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#F9F8F6] border border-gray-200 text-gray-700">
-                <span>10-Yr Structural Warranty</span>
-              </span>
-            </div>
+
           </div>
 
-          {/* Column 2: Navigation Links (Updated for React Router) */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-bold text-xs uppercase tracking-widest text-[#1A1A1A]">Navigation</h4>
-            <ul className="space-y-2.5 text-sm text-gray-600">
+
+          {/* =================================================
+              NAVIGATION
+          ================================================= */}
+
+          <div className="md:col-span-3">
+
+            <h4
+              className="
+                text-[10px]
+                uppercase
+                tracking-[0.2em]
+                font-bold
+                text-gray-400
+                mb-5
+              "
+            >
+              Company
+            </h4>
+
+            <div className="grid grid-cols-2 gap-y-3">
+
               {navLinks.map((link) => (
-                <li key={link.path}>
-                  <Link 
-                    to={link.path} 
-                    onClick={scrollToTop} 
-                    className="hover:text-[#C35A3E] transition-colors cursor-pointer text-left font-medium text-xs uppercase tracking-wider block w-fit"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={scrollToTop}
+                  className="
+                    text-xs
+                    uppercase
+                    tracking-wider
+                    text-gray-500
+                    hover:text-[#C35A3E]
+                    transition-colors
+                    w-fit
+                  "
+                >
+                  {link.label}
+                </Link>
               ))}
-            </ul>
+
+            </div>
+
           </div>
 
-          {/* Column 3: Contact */}
-          <div className="lg:col-span-4 space-y-4">
-            <h4 className="font-bold text-xs uppercase tracking-widest text-[#1A1A1A]">Direct Contact</h4>
-            <div className="space-y-3 text-xs sm:text-sm text-gray-600">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#C35A3E] shrink-0 mt-0.5" />
-                <span>{companyInfo.contact.address}, {companyInfo.contact.city}</span>
+
+          {/* =================================================
+              CONTACT
+          ================================================= */}
+
+          <div className="md:col-span-4">
+
+            <h4
+              className="
+                text-[10px]
+                uppercase
+                tracking-[0.2em]
+                font-bold
+                text-gray-400
+                mb-5
+              "
+            >
+              Contact
+            </h4>
+
+            <div className="space-y-3">
+
+              {/* ADDRESS */}
+
+              <div className="flex items-center gap-3">
+
+                <MapPin
+                  className="
+                    w-4
+                    h-4
+                    text-[#C35A3E]
+                    shrink-0
+                  "
+                />
+
+                <span className="text-xs text-gray-500">
+                  {contactDetails.address}
+                </span>
+
               </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#C35A3E] shrink-0" />
-                <span>{companyInfo.contact.phone}</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#C35A3E] shrink-0" />
-                <span>{companyInfo.contact.email}</span>
-              </div>
-            </div>
-            <div className="pt-2">
-              <button 
-                onClick={onOpenProjectModal} 
-                className="w-full py-3 bg-[#C35A3E] hover:bg-[#b04f35] text-white text-[11px] font-bold uppercase tracking-widest transition-all shadow-sm cursor-pointer"
+
+
+              {/* PHONE */}
+
+              <a
+                href={`tel:${contactDetails.phone}`}
+                className="
+                  flex
+                  items-center
+                  gap-3
+                  text-xs
+                  text-gray-500
+                  hover:text-white
+                  transition-colors
+                "
               >
-                Start Your Project
-              </button>
+
+                <Phone
+                  className="
+                    w-4
+                    h-4
+                    text-[#C35A3E]
+                    shrink-0
+                  "
+                />
+
+                +91 {contactDetails.phone}
+
+              </a>
+
+
+              {/* EMAIL */}
+
+              <a
+                href={`mailto:${contactDetails.email}`}
+                className="
+                  flex
+                  items-center
+                  gap-3
+                  text-xs
+                  text-gray-500
+                  hover:text-white
+                  transition-colors
+                  break-all
+                "
+              >
+
+                <Mail
+                  className="
+                    w-4
+                    h-4
+                    text-[#C35A3E]
+                    shrink-0
+                  "
+                />
+
+                {contactDetails.email}
+
+              </a>
+
             </div>
+
           </div>
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
-          <div>© {new Date().getFullYear()} venkat   All rights reserved.</div>
-          <div className="flex items-center gap-4">
-            <span className="hover:text-[#1A1A1A] transition-colors cursor-pointer">Privacy & Terms</span>
-            <span>|</span>
-            <span className="hover:text-[#1A1A1A] transition-colors cursor-pointer">Structural Safety Code</span>
-            <span>|</span>
-            <button onClick={scrollToTop} className="inline-flex items-center gap-1.5 text-gray-600 hover:text-[#1A1A1A] transition-colors ml-2 cursor-pointer font-semibold uppercase tracking-wider text-[10px]" title="Back to top">
-              <span>Back to Top</span>
-              <ArrowUp className="w-3.5 h-3.5 text-[#C35A3E]" />
-            </button>
+
+        {/* =================================================
+            CTA
+        ================================================= */}
+
+        <div
+          className="
+            mt-10
+            pt-8
+            border-t
+            border-white/10
+            flex
+            flex-col
+            sm:flex-row
+            items-start
+            sm:items-center
+            justify-between
+            gap-6
+          "
+        >
+
+          <div>
+
+            <p
+              className="
+                text-xs
+                uppercase
+                tracking-[0.15em]
+                text-gray-500
+                mb-1
+              "
+            >
+              Have a project in mind?
+            </p>
+
+            <p
+              className="
+                text-lg
+                font-light
+                text-white
+              "
+            >
+              Let's build it together.
+            </p>
+
           </div>
+
+
+          <button
+            type="button"
+            onClick={onOpenProjectModal}
+            className="
+              group
+              inline-flex
+              items-center
+              gap-3
+              bg-[#C35A3E]
+              hover:bg-[#b04f35]
+              px-6
+              py-3.5
+              text-[10px]
+              font-bold
+              uppercase
+              tracking-widest
+              text-white
+              transition-all
+            "
+          >
+
+            Start Your Project
+
+            <ArrowUpRight
+              className="
+                w-4
+                h-4
+                group-hover:translate-x-1
+                group-hover:-translate-y-1
+                transition-transform
+              "
+            />
+
+          </button>
+
+        </div>
+
+
+        {/* =================================================
+            COPYRIGHT
+        ================================================= */}
+
+        <div
+          className="
+            mt-8
+            pt-5
+            border-t
+            border-white/5
+            flex
+            flex-col
+            sm:flex-row
+            items-center
+            justify-between
+            gap-3
+          "
+        >
+
+          <p
+            className="
+              text-[9px]
+              uppercase
+              tracking-widest
+              text-gray-600
+              text-center
+              sm:text-left
+            "
+          >
+            © {new Date().getFullYear()} BRICKON CONSTRUCTION.
+            ALL RIGHTS RESERVED.
+          </p>
+
+
+          <button
+            onClick={scrollToTop}
+            className="
+              group
+              flex
+              items-center
+              gap-2
+              text-[9px]
+              uppercase
+              tracking-widest
+              text-gray-600
+              hover:text-white
+              transition-colors
+            "
+          >
+
+            Back to Top
+
+            <span
+              className="
+                w-7
+                h-7
+                border
+                border-white/10
+                group-hover:border-[#C35A3E]
+                flex
+                items-center
+                justify-center
+                transition-colors
+              "
+            >
+
+              <ArrowUp
+                className="
+                  w-3
+                  h-3
+                  text-[#C35A3E]
+                  group-hover:-translate-y-0.5
+                  transition-transform
+                "
+              />
+
+            </span>
+
+          </button>
+
         </div>
 
       </div>
+
     </footer>
   );
 };
